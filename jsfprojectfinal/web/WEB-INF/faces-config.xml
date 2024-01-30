@@ -58,4 +58,24 @@
         <managed-bean-class>com.abhpai.Login</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>newJSFManagedBean</managed-bean-name>
+        <managed-bean-class>NewJSFManagedBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>action</managed-bean-name>
+        <managed-bean-class>com.abhpai.Action</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>valueChange</managed-bean-name>
+        <managed-bean-class>com.abhpai.ValueChange</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <lifecycle>
+        <phase-listener> 
+            com.abhpai.PhaseListen
+        </phase-listener>            
+    </lifecycle>
 </faces-config>
