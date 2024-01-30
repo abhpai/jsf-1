@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:inputText id="name" p:placeholder= "Enter name" value="${user.name}"/><br/> <!-- creates a text box -->
+            <h:inputSecret id="pass" value="${user.pass}"/> <br/> <!-- creates a text box where text is not visible -->
+            <!-- h:inputTextArea is used to take inputs for multiple rows and columns such as address -->
+            <br/>
+            <h:commandButton value="Click here to go to other page" action="${user.displaycommand()}"/> <br/>
+            <h:commandButton value="Click here to display the name below"/> <br/><!-- action field tells which function needs to be invoked and the controller passes the control to the specified jsf page that needs to be accessed -->
+            <!-- The above is implicit navigation and uses page forward -->
+            <br/>
+            <h:outputText value="The name you entered is ${user.name}"/><br/> <br/>
+            Accept my terms and conditions <h:selectBooleanCheckbox value="${test.selectbox}"/>
+            <h:commandButton value ="Click after selecting the checkbox"/>
+            <h:outputText value="${test.selectbox}"/>
+            <!-- multiple checkboxes can be can be done with both lists and maps and inserting items with a new xmlns tag "core" -->
+            <h:selectManyCheckbox>
+                <f:selectItems value ="${test.items}"/>
+            </h:selectManyCheckbox> <br/>
+            <h:outputText value="The text you selected is ${test.items}"/> <br/> <br/>
+            <!-- For radio button, it is similar to checkbox, but we don't need to create a list to manage all the values -->
+            <!-- Listbox shows a list of items. It can be implemented in two ways, selectOneListBox or selectManyListBox. The implementation is similar to that of checkbox. -->
+            <!-- Datatable is used to store the items in the table -->
+            
+            <h:inputText id="name1" p:placeholder = "Enter another name" p:autofocus="true"/> <!-- Self-explanatory and due to the autofocus tag the cursor automatically gets placed in the textbox -->
+            <!-- <h:inputText id="email1" p:placeholder = "Enter email" p:type="email"/> The entered text needs to be an email type -->
+            
+            <!-- f:convertNumber tag is used to modify the output of the number for example minimum number of fraction digits before and after decimal points or specify a pattern-->
+            
+            <h:inputText id="date1" value="${test.date}" converterMessage="Must be in dd-mm-yyyy format">
+                <f:convertDateTime pattern="dd-mm-yyyy"/>
+            </h:inputText> <br/>
+            <h:outputText value="${test.date}"/>
+            
+            <!-- A custom convertor can be created using custom convertor tag and a new java bean for the same-->
+            <!-- f:validateRegex and other such validators can be used to validate the user input -->
+            
+           <!-- <h:inputText validatorMessage="Must be in lowercase and minimum of six characters">
+                <f:validateRegex pattern="((?=.*[a-z]).{6,})"/>
+            </h:inputText> -->
+            
+            <!-- We can create a class to inculcate our custom validator -->
+            
+            <!-- JSF Navigation: Move from one web page to another. Two types: Static and Dynamic.
+                    Two ways to implement navigation: Implicit and Rule based. 
+                    Implicit can be used to implement only static navigation
+                    Rule based can be used to implement static as well as dynamic navigation. They are configured in faces-config.xml
+                    There are two ways in which the page gets forwarded to another xhtml page: Page forward and Page redirect
+                    Page forward: It stays in the same page and only a reference is passed to the other page
+                    Page redirect: It explicitly passes the control to the referenced page and the xhtml page is explicitly passed to the url-->
+            
+            <br/>
+            <br/>
+            Name <h:inputText value="${login.name}"/> <br/>
+            Password <h:inputSecret value="${login.password}"/> <br/>
+            <h:commandButton value="Login" action="${login.checklogin()}" />
+            </h:form>
+    </h:body>
+</html>
